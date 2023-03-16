@@ -1,6 +1,7 @@
 #-----EXERCICE A-----#
 import random
-nouveauScore = 0  
+nouveauScore = 0
+storage = 0
 
 class Player:
     def __init__(self, nom, points) -> None:
@@ -9,6 +10,7 @@ class Player:
     
     def getName(self):
         return self.__nom
+    
     def getScore(self):
         return self.__score
 
@@ -25,11 +27,20 @@ j4 = Player ("4", 0)
 partie = [j1,j2,j3,j4]
 
 
-for j in range (0,4):
-    print ("Chanson n°", j)
-    for i in range (0, 4):
+for j in range (0, 4):
+    print ("-------------")                                                  #Le but ici est de générer un score pour chaque chanson pour chaque joueur#
+    print ("Joueur n°", j+1)
+    print ("-------------")
+    for i in range (0, 5):
+        
         nouveauScore = random.randint(50, 100)
-        partie[i].changeScore(nouveauScore)
+        storage += nouveauScore
+        partie[j].changeScore(nouveauScore)
         nouveauScore = 0
-        print (partie[i].getName(), "à", partie[i].getScore())
+        print ("Chanson n°",i+1, " score: ", partie[j].getScore())
+
+    print ("-------------")
+    moyenne = storage/5
+    storage = 0
+    print( "Moyenne du joueur : ", moyenne)
 
